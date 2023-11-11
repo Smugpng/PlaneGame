@@ -560,6 +560,7 @@ MonoBehaviour:
   enemyOnePrefab: {fileID: 4534157824110357499, guid: 8eaa3e72dd2d0ae44a3f030dc991ad4f, type: 3}
   cloudPrefab: {fileID: 1800832648398967831, guid: 4c0edb998b9c839478875276706082a5, type: 3}
   score: 0
+  lives: 3
   cloudsMove: 1
   scoreText: {fileID: 66921952}
   livesText: {fileID: 1546887969}

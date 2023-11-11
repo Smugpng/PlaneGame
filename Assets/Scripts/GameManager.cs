@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyOnePrefab;
     public GameObject cloudPrefab;
     public int score;
+    public int lives;
     public int cloudsMove;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         cloudsMove = 1;
         score = 0;
         scoreText.text = "Score: " + score;
+        livesText.text = "Lives: " + lives;
     }
 
     // Update is called once per frame
@@ -55,5 +57,11 @@ public class GameManager : MonoBehaviour
     {
         score = score + scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void LoseLives(int liveLost)
+    {
+        lives = lives - liveLost;
+        livesText.text = "Lives: " + lives;
     }
 }
