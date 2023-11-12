@@ -69,11 +69,18 @@ public class Player : MonoBehaviour
     }
     public void AddLife()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(1);
-        //lives--;
+        GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(-1);
         Debug.Log(lives);
-        //lives -= 1;
         lives = lives + 1;
+        if (lives > 3)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().EarnScore(1);
+            GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(1);
+            lives--;
+            Debug.Log(lives);
+
+        }
+
     
     }
 }

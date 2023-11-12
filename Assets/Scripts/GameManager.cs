@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject powerupPrefab;
     public int score;
     public int lives;
-    public int maxlives;
+    public int maxLives;
     public int cloudsMove;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
     void SpawnPowerup()
     {
-        Instantiate(powerupPrefab, new Vector3(Random.Range(-8f, 8f), Random.Range(-7.5f, 7.5f), 0), Quaternion.identity);
+        Instantiate(powerupPrefab, new Vector3(Random.Range(-8f, 8f), Random.Range(5f, 7.5f), 0), Quaternion.identity);
     }
     
     public void GameOver()

@@ -17,12 +17,12 @@ public class Powerup : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D whatIHit)
     {
-        whatIHit.tag == "Player";
-        if (lives >= maxlives)
+        if (whatIHit.tag == "Player")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().EarnScore(1);
+            whatIHit.GetComponent<Player>().AddLife();
             Destroy(this.gameObject);
         }
+        
         
     }            
 }

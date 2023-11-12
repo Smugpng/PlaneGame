@@ -554,6 +554,7 @@ MonoBehaviour:
   powerupPrefab: {fileID: 8367026487158268253, guid: af7890d8083d863458530a65b4273b98, type: 3}
   score: 0
   lives: 3
+  maxLives: 3
   cloudsMove: 1
   scoreText: {fileID: 66921952}
   livesText: {fileID: 1546887969}
