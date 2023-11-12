@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     private float horizontalScreenLimit = 10f;
     private float verticalScreenLimit = 4f;
     public int lives;
+    public int maxlives;
 
     // Start is called before the first frame update
     void Start()
     {
         playerSpeed = 6f;
         lives = 3;
+        maxlives = 3;
     }
 
     // Update is called once per frame
@@ -64,5 +66,14 @@ public class Player : MonoBehaviour
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+    }
+    public void AddLife()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(1);
+        //lives--;
+        Debug.Log(lives);
+        //lives -= 1;
+        lives = lives + 1;
+    
     }
 }

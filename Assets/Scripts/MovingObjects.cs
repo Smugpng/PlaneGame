@@ -26,6 +26,11 @@ public class MovingObjects : MonoBehaviour
             //You are enemy one
             transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime * 2f);
         }
+        if (objectType == 3)
+        {
+            //You are a powerup
+            transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * 2f);
+        }
 
         if (transform.position.y > 11f || transform.position.y < -11f)
         {

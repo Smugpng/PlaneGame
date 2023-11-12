@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyOnePrefab;
     public GameObject cloudPrefab;
+    public GameObject powerupPrefab;
     public int score;
     public int lives;
+    public int maxlives;
     public int cloudsMove;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("SpawnEnemyOne", 1f, 2f);
+        InvokeRepeating("SpawnPowerup", 5f, 7f);
         cloudsMove = 1;
         score = 0;
         scoreText.text = "Score: " + score;
@@ -46,7 +49,11 @@ public class GameManager : MonoBehaviour
             Instantiate(cloudPrefab, new Vector3(Random.Range(-11f, 11f), Random.Range(-7.5f, 7.5f), 0), Quaternion.identity);
         }
     }
-
+    void SpawnPowerup()
+    {
+        Instantiate(powerupPrefab, new Vector3(Random.Range(-8f, 8f), Random.Range(-7.5f, 7.5f), 0), Quaternion.identity);
+    }
+    
     public void GameOver()
     {
         CancelInvoke();
@@ -63,5 +70,11 @@ public class GameManager : MonoBehaviour
     {
         lives = lives - liveLost;
         livesText.text = "Lives: " + lives;
-    }
+    } 
+    
+    public void AddLives(int liveAdded)
+    {
+        lives = lives - liveAdded;
+        livesText.text = "Lives: " + lives;
+    } 
 }
