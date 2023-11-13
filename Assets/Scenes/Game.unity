@@ -552,6 +552,7 @@ MonoBehaviour:
   enemyOnePrefab: {fileID: 4534157824110357499, guid: 8eaa3e72dd2d0ae44a3f030dc991ad4f, type: 3}
   cloudPrefab: {fileID: 1800832648398967831, guid: 4c0edb998b9c839478875276706082a5, type: 3}
   powerupPrefab: {fileID: 8367026487158268253, guid: af7890d8083d863458530a65b4273b98, type: 3}
+  coinPrefab: {fileID: 2642350884113063924, guid: b1361427852479a48af61adf36a3ced1, type: 3}
   score: 0
   lives: 3
   maxLives: 3

@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             lives--;
             Debug.Log(lives);
 
-        }
+        } 
 
     
     }
