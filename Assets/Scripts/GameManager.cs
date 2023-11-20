@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject cloudPrefab;
     public GameObject powerupPrefab;
     public GameObject coinPrefab;
+    public GameObject shieldPrefab;
+    public GameObject[] thingsThatSpawn;
     public int score;
     public int lives;
     public int maxLives;
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("SpawnEnemyOne", 1f, 2f);
         InvokeRepeating("SpawnPowerup", 5f, 7f);
         InvokeRepeating("SpawnCoin", 1f, 10f);
+        InvokeRepeating("SpawnShield", 1f, 10f);
         cloudsMove = 1;
         score = 0;
         scoreText.text = "Score: " + score;
@@ -58,6 +61,11 @@ public class GameManager : MonoBehaviour
     void SpawnCoin()
     {
        Instantiate(coinPrefab, new Vector3(Random.Range(-8f, 8f), Random.Range(5f, 7.5f), 0), Quaternion.identity);
+    }
+    void SpawnShield()
+    {
+       Instantiate(shieldPrefab, new Vector3(Random.Range(-8f, 8f), Random.Range(5f, 7.5f), 0), Quaternion.identity);
+   
     }
     
     public void GameOver()

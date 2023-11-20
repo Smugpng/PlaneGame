@@ -10,14 +10,18 @@ public class Player : MonoBehaviour
     private float horizontalScreenLimit = 10f;
     private float verticalScreenLimit = 4f;
     public int lives;
-    public int maxlives;
+    public int maxLives;
+    private bool _isShieldActive;
+    [SerializeField]
+    private GameObject _shieldVisual;
 
     // Start is called before the first frame update
     void Start()
     {
         playerSpeed = 6f;
         lives = 3;
-        maxlives = 3;
+        maxLives = 3;
+        _shieldVisual.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,9 +55,19 @@ public class Player : MonoBehaviour
             Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
-
+public void ShieldActive()
+{
+    _isShieldActive = true;
+    _shieldVisual.SetActive(true);
+}
     public void LoseLife()
     {
+        if (_isShieldActive == true)
+        {
+            _shieldVisual.SetActive(false);
+            _isShieldActive = false;
+            return;
+        }
         GameObject.Find("GameManager").GetComponent<GameManager>().LoseLives(1);
         lives--;
         Debug.Log(lives);
@@ -69,18 +83,20 @@ public class Player : MonoBehaviour
     }
     public void AddLife()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(-1);
+        GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(1);
+        //lives--;
         Debug.Log(lives);
+        //lives -= 1;
         lives = lives + 1;
-        if (lives > 3)
-        {
-            GameObject.Find("GameManager").GetComponent<GameManager>().EarnScore(1);
-            GameObject.Find("GameManager").GetComponent<GameManager>().AddLives(1);
-            lives--;
-            Debug.Log(lives);
-
-        } 
-
-    
-    }
+    }    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+             switch (collision.name)
+             {
+                    case "Barrier(Clone)": GameObject.Find("Player").GetComponent<Player>().ShieldActive();
+                    Destroy(collision.gameObject);
+                    break;
+             }
+        
+    }      
 }
